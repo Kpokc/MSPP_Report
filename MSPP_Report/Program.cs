@@ -25,10 +25,13 @@ namespace MSPP_Report
 
             /// If file exists pass it to next class ////////////
             string path = @"C:\Users\ssladmin\Desktop\Weekly rep\";
-            if (File.Exists(path))
-            {   
+
+            string[] locationArray = Directory.GetFiles(path);
+
+            if (locationArray.Length > 0)
+            {
                 ///////// Get all files links /////////////////
-                string[] locationArray = Directory.GetFiles(path);
+                /*string[] locationArray = Directory.GetFiles(path);*/
                 locationArray = Array.ConvertAll(locationArray, x => x.ToUpper());
 
                 /// Array with locations passed to WorksheetSetUp class ////
@@ -40,7 +43,7 @@ namespace MSPP_Report
                 Console.ReadLine();
                 foreach (string fileLink in locationArray)
                 {
-                    File.Delete(fileLink);
+                    /*File.Delete(fileLink);*/
                 }
             }   
             else 
