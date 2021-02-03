@@ -45,7 +45,32 @@ namespace MSPP_Report
                 findNext = findInColumn.FindNext(findInCell);
 
                 y++;
-            }dfdd252
+            }
+
+            ///////// Create new file name and Save as to ////////
+            DateTime today = new DateTime();
+
+            string newFileName = @"V:\Warehouses\Parkmore Warehouse\Reports\Medtronic Reports\Spare Parts (MSPP) SSL B1\MSPP Report " + today.ToString("yyyyMMdd") + ".xls";
+
+            excelBook.SaveAs(newFileName, XlFileFormat.xlWorkbookNormal);
+
+            Console.WriteLine("MSPP Report " + today.ToString("yyyyMMdd") + "  ----> Saved");
+            
+            excelApp.Quit();
+
+
+            //////////// Quit and Release /////////////
+            Marshal.ReleaseComObject(excelApp);
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            Process[] List;
+            List = Process.GetProcessesByName("EXCEL");
+            foreach (Process proc in List)
+            {
+                proc.Kill();
+            }
         }
     }
 }
