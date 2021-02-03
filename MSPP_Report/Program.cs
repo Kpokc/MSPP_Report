@@ -25,8 +25,7 @@ namespace MSPP_Report
 
             /// If file exists pass it to next class ////////////
             string path = @"C:\Users\ssladmin\Desktop\Weekly rep\";
-            bool fileExist = File.Exists(path);
-            if (!fileExist)
+            if (File.Exists(path))
             {   
                 ///////// Get all files links /////////////////
                 string[] locationArray = Directory.GetFiles(path);
