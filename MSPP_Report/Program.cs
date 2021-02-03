@@ -26,7 +26,7 @@ namespace MSPP_Report
             /// If file exists pass it to next class ////////////
             string path = @"C:\Users\ssladmin\Desktop\Weekly rep\";
             bool fileExist = File.Exists(path);
-            if (fileExist)
+            if (!fileExist)
             {   
                 ///////// Get all files links /////////////////
                 string[] locationArray = Directory.GetFiles(path);
@@ -41,12 +41,13 @@ namespace MSPP_Report
                 Console.ReadLine();
                 foreach (string fileLink in locationArray)
                 {
-                    File.Delete(fileLink);
+                    /*File.Delete(fileLink);*/
                 }
             }   
             else 
             {
                 Console.WriteLine("There is no files in the folder.");
+                Console.ReadLine();
             }
         }
     }
