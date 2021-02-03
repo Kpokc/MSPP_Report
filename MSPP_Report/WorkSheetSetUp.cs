@@ -38,7 +38,6 @@ namespace MSPP_Report
             {
                 findInCell = findNext;
                 findNext = findInColumn.FindNext(findInCell);
-                Console.WriteLine(findNext.Row);
                 if (custNamePosition < 2)
                 {
                     excelSheet.HPageBreaks.Add(findNext);
