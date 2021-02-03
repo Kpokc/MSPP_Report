@@ -54,6 +54,11 @@ namespace MSPP_Report
 
             excelBook.SaveAs(newFileName, XlFileFormat.xlWorkbookNormal);
 
+            /////// Pass new file location to SaveToEmailDrafts Class
+            SaveToEmailDrafts saveToEmail = new SaveToEmailDrafts();
+            saveToEmail.addFileToEmail(newFileName, today.ToString("yyyyMMdd"));
+            //////////////////////////////////////////////////////
+
             Console.WriteLine("MSPP Report " + today.ToString("yyyyMMdd") + "  ----> Saved");
             
             excelApp.Quit();
