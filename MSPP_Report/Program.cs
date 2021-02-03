@@ -27,16 +27,27 @@ namespace MSPP_Report
             string path = @"C:\Users\ssladmin\Desktop\Weekly rep\";
             bool fileExist = File.Exists(path);
             if (fileExist)
-            {
+            {   
+                ///////// Get all files links /////////////////
                 string[] locationArray = Directory.GetFiles(path);
                 locationArray = Array.ConvertAll(locationArray, x => x.ToUpper());
-            }
+
+                /// Array with locations passed to WorksheetSetUp class ////
+                WorkSheetSetUp passArray = new WorkSheetSetUp();
+                passArray.openFile(locationArray);
+
+                /////// Delete all files in folder ///////////////
+                Console.WriteLine("\nPres Enter to Delete all files and close console...");
+                Console.ReadLine();
+                foreach (string fileLink in locationArray)
+                {
+                    File.Delete(fileLink);
+                }
+            }   
             else 
             {
                 Console.WriteLine("There is no files in the folder.");
             }
-            
-            Console.ReadLine();
         }
     }
 }
