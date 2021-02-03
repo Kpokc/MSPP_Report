@@ -13,7 +13,7 @@ namespace MSPP_Report
         public void openFile(string[] args)
         {
             Application excelApp = new Application();
-            Workbook excelBook = excelApp.Workbooks.Open(args[]);
+            Workbook excelBook = excelApp.Workbooks.Open(args[0]);
             _Worksheet excelSheet = excelBook.Sheets[1];
             Range excelRange = excelSheet.UsedRange;
 
@@ -27,7 +27,25 @@ namespace MSPP_Report
             excelSheet.Cells[11, 4].HorizontalAligment = XlHAlign.xlHAlignRight;
             excelSheet.Range[excelSheet.Cells[11,4], excelSheet.Cells[11,8]].Font.Bold = true;
 
+            Range findInColumn = excelSheet.Columns["A:A"];
+            Range findInCell = findInColumn.Find("Customer Name");
+            Range findNext = findInCell.FindNext(findInCell);
 
+            int y = 0;
+            int sumRange = 0;
+
+            while (y < 2)
+            {
+                excelSheet.HPageBreaks.Add(findNext);
+                if (y == 0)
+                {
+                    sumRange = findNext.Row - 8;
+                }
+                findInCell = findNext;
+                findNext = findInColumn.FindNext(findInCell);
+
+                y++;
+            }
         }
     }
 }
