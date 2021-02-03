@@ -44,7 +44,6 @@ namespace MSPP_Report
                 }
                 else
                 {
-                    Console.WriteLine(findNext.Row);
                     break;
                 }
             }
