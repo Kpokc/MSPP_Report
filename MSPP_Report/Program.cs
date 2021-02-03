@@ -41,7 +41,7 @@ namespace MSPP_Report
                 Console.ReadLine();
                 foreach (string fileLink in locationArray)
                 {
-                    /*File.Delete(fileLink);*/
+                    File.Delete(fileLink);
                 }
             }   
             else 
